@@ -1,3 +1,6 @@
+-- please no magik or rosploiter
+-- theres nothing to patch about this anyways
+
 getgenv().Amber = {
     rjow = false,
     flaura = {
