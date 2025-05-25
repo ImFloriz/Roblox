@@ -1,6 +1,8 @@
 -- please no magik or rosploiter
 -- theres nothing to patch about this anyways
 
+if queue_on_teleport then queue_on_teleport(`loadstring(game:HttpGet("https://raw.githubusercontent.com/ImFloriz/Roblox/refs/heads/main/Amber/Washiez.luau"))()`) end
+
 getgenv().Amber = {
     rjow = false,
     flaura = {
