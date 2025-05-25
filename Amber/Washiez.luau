@@ -396,7 +396,7 @@ do -- Vehicle
         end
     })
     
-    self:CreateSlider({
+    --[[self:CreateSlider({
         Name = "Fling aura power",
         Range = {398,10000},
         CurrentValue = 16,
@@ -406,7 +406,7 @@ do -- Vehicle
         Callback = function(s)
             power = s
         end
-    })
+    })]]
     self:CreateToggle({
         Name = "Visualize fling aura",
         CurrentValue = false,
