@@ -124,7 +124,7 @@ function notify(txt, dur)
 end
 
 
-local power = 350
+local power = 280 -- 350
 -- Training center
 if game.PlaceId == 6868593153 then power = 1e5 end
 
@@ -179,7 +179,9 @@ function Washiez:GetVehicle()
 
     return nil
 end
-
+function Washiez:GetNTag()
+    return workspace.Nametags:FindFirstChild(Washiez:GetPlayer().Name)
+end
 do -- Info
     local self = AmberW.Info
 
@@ -263,6 +265,94 @@ do -- Player
             end
         end)
     end)
+    self:CreateSection("nametag")
+
+    self:CreateInput({
+        Name = "Username",
+        CurrentValue = Washiez:GetNTag().Username.Text,
+        PlaceholderText = "username",
+        RemoveTextAfterLostFocus = false,
+        Flag = "player.usert",
+        Callback = function(txt)
+            local NTag = Washiez:GetNTag()
+
+            NTag.Username.Text = txt
+        end
+    })
+
+    self:CreateInput({
+        Name = "Rank",
+        CurrentValue = Washiez:GetNTag().Rank.Text,
+        PlaceholderText = "rank",
+        RemoveTextAfterLostFocus = false,
+        Flag = "player.rankt",
+        Callback = function(txt)
+            local NTag = Washiez:GetNTag()
+
+            NTag.Rank.Text = txt
+        end
+    })
+
+    self:CreateInput({
+        Name = "Message",
+        CurrentValue = Washiez:GetNTag().Message.Text,
+        PlaceholderText = "message",
+        RemoveTextAfterLostFocus = false,
+        Flag = "player.messaget",
+        Callback = function(txt)
+            local NTag = Washiez:GetNTag()
+
+            NTag.Message.Text = txt
+        end
+    })
+
+    local userColor = self:CreateColorPicker({
+        Name = "Username",
+        Color = Color3.fromRGB(255,255,255),
+        Flag = "playeraaa.userc",
+        Callback = function(clr)
+            local NTag = Washiez:GetNTag()
+
+            NTag.Username.TextColor3 = clr
+        end
+    })
+
+    local rankColor = self:CreateColorPicker({
+        Name = "Rank",
+        Color = Color3.fromRGB(255,255,255),
+        Flag = "playeraaa.rankc",
+        Callback = function(clr)
+            local NTag = Washiez:GetNTag()
+
+            NTag.Rank.TextColor3 = clr
+        end
+    })
+
+    local msgColor = self:CreateColorPicker({
+        Name = "Message",
+        Color = Color3.fromRGB(255,255,255),
+        Flag = "playeraaa.messagec",
+        Callback = function(clr)
+            local NTag = Washiez:GetNTag()
+
+            NTag.Message.TextColor3 = clr
+        end
+    })
+
+    -- input and toggles run on start, but not color pickers :sob:
+    task.spawn(function()
+        task.wait(0.3)
+        local NTag = Washiez:GetNTag()
+
+
+
+        NTag.Username.TextColor3 = userColor.Color
+        NTag.Rank.TextColor3 = rankColor.Color
+        NTag.Message.TextColor3 = msgColor.Color
+    end)
+
+
+
     self:CreateSection("exploits") -- why did i put it in THIS tab, TODO: make another tab as i am a lazy idiot
     self:CreateButton({
         Name = "Fling tool",
@@ -396,7 +486,7 @@ do -- Vehicle
         end
     })
     
-    --[[self:CreateSlider({
+    self:CreateSlider({
         Name = "Fling aura power",
         Range = {398,10000},
         CurrentValue = 16,
@@ -406,7 +496,7 @@ do -- Vehicle
         Callback = function(s)
             power = s
         end
-    })]]
+    })
     self:CreateToggle({
         Name = "Visualize fling aura",
         CurrentValue = false,
