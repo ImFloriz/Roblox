@@ -124,7 +124,7 @@ function notify(txt, dur)
 end
 
 
-local power = 280 -- 350
+local power = 340 -- 350
 -- Training center
 if game.PlaceId == 6868593153 then power = 1e5 end
 
