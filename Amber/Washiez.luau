@@ -486,17 +486,6 @@ do -- Vehicle
         end
     })
     
-    self:CreateSlider({
-        Name = "Fling aura power",
-        Range = {398,10000},
-        CurrentValue = 16,
-        Increment = 1,
-        Suffix = "Power",
-        Flag = "vehicle.fap",
-        Callback = function(s)
-            power = s
-        end
-    })
     self:CreateToggle({
         Name = "Visualize fling aura",
         CurrentValue = false,
